@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Carousel } from 'flowbite-react';
 
 const Banner = () => {
   const carouselRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handlePrev = () => {
     if (carouselRef.current) {
@@ -16,6 +17,10 @@ const Banner = () => {
     }
   };
 
+  const handleSlideChange = (index) => {
+    setCurrentSlide(index);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (carouselRef.current) {
@@ -26,24 +31,24 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 relative ">
-      <div className=" relative sm:h-screen h-72  overflow-x-hidden overflow-y-hidden">
-        <Carousel ref={carouselRef} className="carousel-inner h-full">
-          <div className="carousel-item relative h-full" style={{ backgroundImage: "url('https://www.sourcesol.co.in/demo/siteb/assets/images/bg1.jpg')",backgroundSize: 'cover' }}>
+    <section className="bg-gray-100 relative">
+      <div className="relative sm:h-screen h-72 overflow-x-hidden overflow-y-hidden">
+        <Carousel ref={carouselRef} className="carousel-inner h-full" onChange={handleSlideChange}>
+          <div className="carousel-item relative h-full" style={{ backgroundImage: "url('https://www.sourcesol.co.in/demo/siteb/assets/images/bg1.jpg')", backgroundSize: 'cover',  }}>
             <div className="absolute inset-0 flex items-center justify-left ">
               <h1 className="text-white text-left text-4xl md:text-5xl  lg:text-6xl xl:text-6xl font-bold px-5">
                 OUR COMMITMENT <br />BUILDING AN <br />ADAPTIVE ENVIRONMENT
               </h1>
             </div>
           </div>
-          <div className="carousel-item relative h-full" style={{ backgroundImage: "url('https://www.sourcesol.co.in/demo/siteb/assets/images/bg2.jpg')",backgroundSize: 'cover' }}>
+          <div className="carousel-item relative h-full" style={{ backgroundImage: "url('https://www.sourcesol.co.in/demo/siteb/assets/images/bg2.jpg')", backgroundSize: 'cover',  }}>
             <div className="absolute inset-0 flex items-center justify-left">
               <h1 className="text-white text-left text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold px-5">
                 OUR COMMITMENT <br />TEAM WORK
               </h1>
             </div>
           </div>
-          <div className="carousel-item relative h-full" style={{ backgroundImage: "url('https://www.sourcesol.co.in/demo/siteb/assets/images/bg3.jpg')",backgroundSize: 'cover'  }}>
+          <div className="carousel-item relative h-full" style={{ backgroundImage: "url('https://www.sourcesol.co.in/demo/siteb/assets/images/bg3.jpg')", backgroundSize: 'cover',  }}>
             <div className="absolute inset-0 flex items-center justify-left">
               <h1 className="text-white text-4xl text-left md:text-5xl lg:text-6xl xl:text-6xl font-bold px-5">
                 OUR COMMITMENT <br />IMPROVE PRODUCTIVITY

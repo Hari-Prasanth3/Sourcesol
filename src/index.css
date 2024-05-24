@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.carousel-inner .carousel-item {
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(10%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .carousel-inner .carousel-item-active {
+    transform: translateX(0);
+    opacity: 1;
+  }
